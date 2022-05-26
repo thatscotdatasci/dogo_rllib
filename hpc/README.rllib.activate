@@ -1,0 +1,4 @@
+# source this file to activate the rllib environment
+
+# run these steps to create environment
+source .venv/bin/activate

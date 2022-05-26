@@ -127,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+.env/
+.env_jupyter/
+ray-rllib/
+slurm_logs/
+machine.file.*
+slurm-*out
