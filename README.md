@@ -1,2 +1,2 @@
-# dogo_rllib
-Ray RLib Scripts
+# DOGO RLlib
+Ray RLlib Scripts
