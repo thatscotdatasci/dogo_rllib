@@ -2,10 +2,8 @@ halfcheetah-ppo:
     env: HalfCheetah-v2
     run: PPO
     local_dir: ./ray-rllib
-    checkpoint_freq: 10
+    checkpoint_freq: 250
     checkpoint_at_end: True
-    # log_level: INFO
-    # num_gpus: 1
     stop:
         episode_reward_mean: 9800
         time_total_s: 10800
@@ -25,7 +23,7 @@ halfcheetah-ppo:
         num_workers: 16
         num_gpus: 1
         grad_clip: 0.5
-        num_envs_per_worker: 16
+        num_envs_per_worker: 32  # Best results: https://github.com/ray-project/rl-experiments
             # grid_search: [16, 32]
         batch_mode: truncate_episodes
         observation_filter: MeanStdFilter

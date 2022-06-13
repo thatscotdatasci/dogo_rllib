@@ -1,3 +1,5 @@
+import os
+
 import numpy as np
 import gym
 import ray
@@ -10,7 +12,10 @@ from ray.rllib.agents import ppo, ddpg, sac
 AGENT = ppo
 TRAINER = ppo.PPOTrainer
 ENVIRONMENT = "HalfCheetah-v2"
-CHECKPOINT_PATH = "ray-rllib/halfcheetah-ppo/PPO_HalfCheetah-v2_ac579_00000_0_2022-05-26_14-35-16/checkpoint_001380/checkpoint-1380"
+# POLICY_PATH = "ray-rllib/halfcheetah-ppo/PPO_HalfCheetah-v2_ac579_00000_0_2022-05-26_14-35-16"
+POLICY_PATH = "ray-rllib/halfcheetah-ppo/PPO_HalfCheetah-v2_167fb_00000_0_2022-05-26_17-51-31"
+CHECKPOINT = 1250
+CHECKPOINT_PATH = os.path.join(POLICY_PATH, f"checkpoint_{str(CHECKPOINT).rjust(6, '0')}", f"checkpoint-{CHECKPOINT}")
 
 SEED = 1443
 EPISODE_LENGTH = 1000

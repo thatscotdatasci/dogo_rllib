@@ -12,8 +12,8 @@ from ray.rllib.agents import ppo, ddpg, sac
 AGENT = ppo
 TRAINER = ppo.PPOTrainer
 ENVIRONMENT = "HalfCheetah-v2"
-CHECKPOINT_PATH = "./ray-rllib/halfcheetah-ppo/PPO_HalfCheetah-v2_ac579_00000_0_2022-05-26_14-35-16/checkpoint_000010/checkpoint-10"
-OUTPUT_DIR = "rollouts/RLLIB-PPO-SP001"
+CHECKPOINT_PATH = "./ray-rllib/halfcheetah-ppo/PPO_HalfCheetah-v2_167fb_00000_0_2022-05-26_17-51-31/checkpoint_000010/checkpoint-10"
+OUTPUT_DIR = "rollouts/RLLIB-PPO-PAP1"
 
 SEED = 1443
 N_EPISODES = 100
@@ -68,8 +68,11 @@ def main():
                 dataset_arr = np.vstack((dataset_arr, ep_transition))
         
         policies = np.vstack((
-            np.full((int(EPISODE_LENGTH/2),1), 0.),
-            np.full((int(EPISODE_LENGTH/2),1), 1.),
+            np.full((int(EPISODE_LENGTH/5),1), 0.),
+            np.full((int(EPISODE_LENGTH/5),1), 1.),
+            np.full((int(EPISODE_LENGTH/5),1), 2.),
+            np.full((int(EPISODE_LENGTH/5),1), 3.),
+            np.full((int(EPISODE_LENGTH/5),1), 4.),
         ))
         dataset_arr = np.hstack((dataset_arr, policies))
         np.save(os.path.join(OUTPUT_DIR, f'rollout_{EPISODE_LENGTH}_{e}.npy'), dataset_arr)
